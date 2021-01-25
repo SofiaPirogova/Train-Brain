@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/style-4.css" />
+  </head>
+  <body>
+    <!-- 9 -->
+    <!-- 1 -->
+    <!-- Position - элементы вне потока.
+Значения свойства position:
+
+static значение по умолчанию для всех элементов
+relative
+absolute
+fixed
+sticky
+Все position, со значением отличным от static - вне потока выполнения.
+
+Элементы вне потока создают новый контекст, т.е. потомки этих элементов перемещаются совместно с родителем.
+
+Свойства, связанные с position
+
+top
+right
+bottom
+left
+z-index
+отсчет и направления
+Задание
+Элемент с классом box надо переместить вниз и вправо на 50%. Для этого
+
+измени свойство position на absolute;
+задай начало отсчета и направление с помощью свойств left и top со значением в 50%;
+Убедись что
+
+смещение происходит относительно левого верхнего угла элемента, т.к. именно он попадает в заданную точку - центр прямоугольника;
+при смещении элемента, вместе с ним перемещаются его потомки: элемент span и текст. -->
+    <div class="container">
+      <div class="box">
+        <span>x</span>
+      </div>
+    </div>
+    <!-- 2 -->
+    <!-- Position: relative vs margin.
+У элемента с position: relative границы элемента в потоке сохраняются, но сам элемент приподнимается над потоком и может перемещаться с помощью свойств: top, right, bottom и left.
+
+Элемент с position: relative не перемещает соседние элементы на новое место, в отличие от перемещения с помощью margin.
+
+Задание
+Для двух элементов, расположенных среди других элементов, задайте смещение вниз и вправо на 2rem. Для этого:
+
+Для элемента с классом by-position задайте свойство position: relative и затем осуществите смещение свойствами top и left.
+
+Для элемента с классом by-margin осуществите смещение свойствами margin-top и margin-left.
+
+Убедись, что элемент со свойством position: relative при смещении не изменил положение соседних элементов. -->
+    <div class="container-fluid">
+      <section>
+        <h2>Инлайн блоки</h2>
+        <div class="container">
+          <div class="box">1</div>
+          <div class="box">2</div>
+          <div class="box">3</div>
+        </div>
+        <div class="container">
+          <div class="box">4</div>
+          <div class="box by-margin">margin</div>
+          <div class="box">6</div>
+        </div>
+        <div class="container">
+          <div class="box">7</div>
+          <div class="box">8</div>
+          <div class="box">9</div>
+        </div>
+      </section>
+      <section>
+        <h2>Инлайн блоки</h2>
+        <div class="container">
+          <div class="box">1</div>
+          <div class="box">2</div>
+          <div class="box">3</div>
+        </div>
+        <div class="container">
+          <div class="box">4</div>
+          <div class="box by-position">relative</div>
+          <div class="box">6</div>
+        </div>
+        <div class="container">
+          <div class="box">7</div>
+          <div class="box">8</div>
+          <div class="box">9</div>
+        </div>
+      </section>
+    </div>
+    <!-- 3 -->
+    <!--  -->
+    <div class="container-fluid">
+      <section>
+        <h2>Flex</h2>
+        <div class="container display-flex">
+          <div class="box">1</div>
+          <div class="box">2</div>
+          <div class="box">3</div>
+        </div>
+        <div class="container display-flex">
+          <div class="box">4</div>
+          <div class="box by-margin">margin</div>
+          <div class="box">6</div>
+        </div>
+        <div class="container display-flex">
+          <div class="box">7</div>
+          <div class="box">8</div>
+          <div class="box">9</div>
+        </div>
+      </section>
+      <section>
+        <h2>Flex</h2>
+        <div class="container display-flex">
+          <div class="box">1</div>
+          <div class="box">2</div>
+          <div class="box">3</div>
+        </div>
+        <div class="container display-flex">
+          <div class="box">4</div>
+          <div class="box by-position">relative</div>
+          <div class="box">6</div>
+        </div>
+        <div class="container display-flex">
+          <div class="box">7</div>
+          <div class="box">8</div>
+          <div class="box">9</div>
+        </div>
+      </section>
+    </div>
+    <!-- 4 -->
+    <!-- Position: fixed.
+Аналог position: absolute.
+
+Отличие в том, что у fixed есть только один предок, относительно которого можно размещать элемент - это viewport.
+
+Viewport это область просмотра браузера (или окно браузера, за исключением панелей и границ самого окна).
+
+Скролл окна браузера не может изменить положение элемента fixed
+
+При выводе страницы на печать элемент fixed будет распечатан на каждом листе страницы документа.
+
+Задание
+В html коде есть элементы с атрибутом id и значениями up и down. На каждый такой элемент создана ссылка - с классом up и якорем href="#up", и классом down и якорем href="#down". Эти ссылки используются для навигации по странице - перехода к элементам с соответствующим id по клику на ссылку.
+
+Размести ссылки так, чтобы при вертикальной прокрутке окна браузера ссылки оставались неподвижными на своих местах (одна - в верхнем, вторая - в нижнем углу в 3rem от краев).
+
+Для этого:
+
+элементу с классом up задай свойства top и left со значением 3rem;
+элементу с классом down задай свойства bottom и right со значением 3rem;
+элементу с классом page-nav задай свойства position с подходящим значением. -->
+    <header id="up">
+      <h2>Header</h2>
+    </header>
+    <main></main>
+    <footer id="down">
+      <h2>Footer</h2>
+    </footer>
+    <a href="#up" class="page-nav up"> &#11014; </a>
+    <a href="#down" class="page-nav down"> &#11015; </a>
+    <!-- 5 -->
+    <!-- Position: fixed. Модальное окно.
+vh и vw
+Viewport или область просмотра браузера точно равна окну браузера. Точнее viewport равен размерам внутренней части окна браузера, за исключением панелей и границ самого окна.
+
+Viewport не является частью HTML, поэтому вы не можете влиять на него CSS-правилами. Однако мы можем устанавливать размер элементов HTML относительно размера viewport.
+
+1vh - единица, равная 1/100-ой высоты viewport;
+1vw - единица, равная 1/100-ой ширины viewport.
+Размещение элемента по центру его родителя с помощью position
+Как мы уже видели, смещение на 50% с помощью top и left приведет к тому что в центре элемента окажется верхний левый угол. Если нам известна ширина и высота самого элемента, то мы можем переместить верхний левый угол с помощью отрицательных margin-left и margin-top вверх и влево.
+
+Если значение margin-left будет половина от ширины, а значение margin-top будет половина от высоты, то при отрицательном смещении центр элемента окажется там, где был верхний левый угол этого элемента.
+
+Таким образом, совмещая top: 50%; left: 50% со сдвигом отрицательного margin-left и margin-top в половину ширины и высоты, мы расположим элемент строго по центру родительского элемента.
+
+Модальное окно
+Этот термин используют для описания эффекта, когда веб-страницу затемняют и делают недоступной для кликов или выделения текста. А по центру экрана располагается окно с каким-то важным содержимым - текст с кнопкой или форма для заполнения и кнопкой закрытия модального окна.
+
+Рассмотрим базовые приемы для создания модального окна.
+
+Задание
+Элемент с классом modal надо разместить на всю ширину и высоту экрана с темным полупрозрачным фоном. По центру этого элемента надо разместить другой элемент с классом box. Для этого элементу с классом modal:
+
+Удали у свойства display значение none. Это разместит modal в DOM и браузер начнет применять css свойства.
+
+Добавь свойству display значение flex. Тогда потомок - элемент с классом box имея значение margin: auto будет находиться по центру родительского элемента.
+
+Задай черный полупрозрачный цвет фону с помощью background-color: hsla(0, 0%, 0%, .5);.
+
+Задай свойство position и значение fixed.
+
+Растяни элемент на всю ширину экрана, задав свойствам left, rigth, top и bootom значение 0.
+
+Отцентрируй элемент с селектором класса box, задав свойство margin со значением auto. Обрати внимание, что если элемент находится под действием родительского свойства flex, то свойство auto выравнивает не только по ширине, но и по высоте родительского элемента.
+
+Обрати внимание на то что ссылка находится под элементом с классом modal и в результате стала недоступной для клика. -->
+    <a
+      href="https://developer.mozilla.org/ru/docs/Learn/CSS/CSS_layout/Positioning"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Переход к разделу документации: "Позиционирование"
+    </a>
+    <div class="modal">
+      <div class="box">
+        <p>Пример размещения модального окна.</p>
+        <button class="btn">Ok</button>
+      </div>
+    </div>
+    <!-- 6 -->
+    <!--Position: sticky.
+Неподвижный header
+Техника неподвижный header основана на том CSS правиле position: fixed, что и при создании модального окна. Но в технике неподвижный header используется ряд отличий:
+
+не задается значение свойству bottom;
+элементу задается высота;
+элементу задается z-index больше, чем у других элементов, например больше чем у элементов с position: sticky.
+Sticky (липкий)
+Значение sticky свойства position:
+
+соединяет поведение элементов при значениях fixed и absolute;
+поддерживает только свойство top, т.е. не поддерживается bottom, left и right;
+свойство top требует обязательно задать начальное значение (например 0).
+Задание
+Есть несколько списков с названиями тегов. У каждого списка первым элементом идет li с классом letter и текстом, содержащим букву, с которой начинается теги в этом списке. Надо сделать так, чтобы при прокрутке списков вниз буква каждого списка прижималась к header и оставалась в таком положении до тех пор, пока теги из этого списка видны на экране.
+
+Для этого элементам с классом letter:
+
+добавь свойство position со значением sticky;
+задай обязательное начальное значение top по высоте header (т.е. 40px);
+убедись в том что элементы с классом letter при некоторых условиях ведут себя как position со значением fixed.  -->
+    <header>
+      <h1>Sticky</h1>
+    </header>
+    <div class="container">
+      <main>
+        <h2>HTML tags</h2>
+        <ul>
+          <li class="letter">A</li>
+          <li>a</li>
+          <li>abbr</li>
+          <li>address</li>
+          <li>area</li>
+          <li>article</li>
+          <li>aside</li>
+          <li>audio</li>
+        </ul>
+        <ul>
+          <li class="letter">B</li>
+          <li>b</li>
+          <li>base</li>
+          <li>bdi</li>
+          <li>bdo</li>
+          <li>blockquote</li>
+          <li>body</li>
+          <li>button</li>
+        </ul>
+        <ul>
+          <li class="letter">C</li>
+          <li>canvas</li>
+          <li>caption</li>
+          <li>cite</li>
+          <li>code</li>
+          <li>col</li>
+          <li>colgroup</li>
+        </ul>
+        <ul>
+          <li class="letter">D</li>
+          <li>data</li>
+          <li>datalist</li>
+          <li>dd</li>
+          <li>del</li>
+          <li>details</li>
+          <li>dfn</li>
+          <li>div</li>
+          <li>dl</li>
+          <li>dt</li>
+        </ul>
+        <ul>
+          <li class="letter">E</li>
+          <li>em</li>
+          <li>embed</li>
+        </ul>
+        <ul>
+          <li class="letter">F</li>
+          <li>fieldset</li>
+          <li>figcaption</li>
+          <li>figure</li>
+          <li>footer</li>
+          <li>form</li>
+        </ul>
+        <ul>
+          <li class="letter">H</li>
+          <li>h1 - h6</li>
+          <li>head</li>
+          <li>header</li>
+          <li>hr</li>
+          <li>html</li>
+        </ul>
+        <ul>
+          <li class="letter">I</li>
+          <li>i</li>
+          <li>iframe</li>
+          <li>img</li>
+          <li>input</li>
+          <li>ins</li>
+        </ul>
+        <ul>
+          <li class="letter">K</li>
+          <li>kbd</li>
+        </ul>
+        <ul>
+          <li class="letter">L</li>
+          <li>label</li>
+          <li>legend</li>
+          <li>li</li>
+          <li>link</li>
+        </ul>
+        <ul>
+          <li class="letter">M</li>
+          <li>main</li>
+          <li>map</li>
+          <li>mark</li>
+          <li>meta</li>
+          <li>meter</li>
+        </ul>
+        <ul>
+          <li class="letter">N</li>
+          <li>nav</li>
+          <li>noscript</li>
+        </ul>
+        <ul>
+          <li class="letter">O</li>
+          <li>object</li>
+          <li>ol</li>
+          <li>optgroup</li>
+          <li>option</li>
+          <li>output</li>
+        </ul>
+        <ul>
+          <li class="letter">P</li>
+          <li>p</li>
+          <li>param</li>
+          <li>picture</li>
+          <li>pre</li>
+          <li>progress</li>
+        </ul>
+        <ul>
+          <li class="letter">Q</li>
+          <li>q</li>
+        </ul>
+        <ul>
+          <li class="letter">R</li>
+          <li>rb</li>
+          <li>rp</li>
+          <li>rt</li>
+          <li>rtc</li>
+          <li>ruby</li>
+        </ul>
+        <ul>
+          <li class="letter">S</li>
+          <li>s</li>
+          <li>samp</li>
+          <li>script</li>
+          <li>section</li>
+          <li>select</li>
+          <li>slot</li>
+          <li>small</li>
+          <li>source</li>
+          <li>span</li>
+          <li>strong</li>
+          <li>style</li>
+          <li>sub</li>
+          <li>summary</li>
+          <li>sup</li>
+        </ul>
+        <ul>
+          <li class="letter">T</li>
+          <li>table</li>
+          <li>tbody</li>
+          <li>td</li>
+          <li>template</li>
+          <li>textarea</li>
+          <li>tfoot</li>
+          <li>th</li>
+          <li>thead</li>
+          <li>time</li>
+          <li>title</li>
+          <li>tr</li>
+          <li>track</li>
+        </ul>
+        <ul>
+          <li class="letter">U</li>
+          <li>u</li>
+          <li>ul</li>
+        </ul>
+        <ul>
+          <li class="letter">V</li>
+          <li>var</li>
+          <li>video</li>
+        </ul>
+        <ul>
+          <li class="letter">W</li>
+          <li>wbr</li>
+        </ul>
+      </main>
+    </div>
+    <!-- 7 -->
+    <!-- Absolute
+Положение элемента с position: absolute
+Если не заданы top, right, bottom или left, то элемент занимает верхний левый угол контентной области родителя (т.е. такой элемент будет учитывать padding или border ближайшего родительского элемента).
+
+Если какое-то значение из top, right, bottom или left задано, то от сторон ближайшего предка с position отличным от static (элемент не будет учитывать padding или border).
+
+Если нет предков с position, отличным от static, то отсчет ведется от body.
+
+Относительные размеры у элементов с position: absolute
+Размеры элемента с position: absolute, заданные в относительных единицах зависят от контекста (от размеров ближайшего relative элемента).
+
+Задание
+Задай элементам с классом box свойство top со значением 0 и убедись в том что элементы нашли ближайшего предка с position: relative или body и расположились в нем как в родительском элементе.
+
+Задай элементам с классом box свойство width со значением 100%
+и убедись в том что элементы заняли всю ширину своего нового родительского элемента с position: relative или body . -->
+    <div class="container-outer psr">
+      <div class="container">
+        <div class="box">2</div>
+      </div>
+    </div>
+    <div class="container-outer">
+      <div class="container psr">
+        <div class="box">3</div>
+      </div>
+    </div>
+    <div class="box">1</div>
+    <!-- 8 -->
+    <!--  z-index
+z-index изменяет положение элемента по оси Z, где ось Z - линия перпендикулярная экрану монитора.
+
+Значение z-index по умолчанию не задано (условно равно 0) для всех элементов.
+
+Для свойства z-index допустимы отрицательные значения.
+
+Запомнить:
+z-index действует на соседей.
+z-index не действует на потомков.
+Задание
+Надо изменить порядок отображения элементов по оси, перпендикулярной экрану монитора. При этом надо убедиться, что z-index не действует на потомков.
+
+Для этого:
+
+Элементу с классом inner задай свойство z-index: 100 и убедись, что эти элементы не перекрываются никакими другими элементами (т.к. у всех остальных элементов значение z-index не задано).
+
+Расположите элементы с классом alfa, beta и gamma в таком порядке
+
+alfa выше всех соседей, со значением 30 свойства z-index;
+beta находится по средине, со значением 20 свойства z-index;
+gamma ниже всех соседей, со значением 10 свойства z-index.
+Убедитесь, что элементы с классом inner теперь частично перекрыты, т.е. z-index не действует на потомков.-->
+    <div class="box alfa">
+      <div class="inner"></div>
+    </div>
+    <div class="box beta">
+      <div class="inner"></div>
+    </div>
+    <div class="box gamma">
+      <div class="inner"></div>
+    </div>
+
+    <!-- 10 -->
+    <!-- 1 -->
+    <!-- 2D трансформации: центрирование.
+Смещение
+Функция transalate(tx, ty) перемещает элемент в горизонтальном (ось X) и вертикальном (ось Y) направлениях относительно начального положения.
+
+Отрицательные значения X смещают элемент влево.
+Отрицательные значения Y смещают элемент вверх.
+Значение в процентах вычисляет проценты от размера самого элемента.
+
+Задание
+Элемент с классом box надо разместить по центру родительского элемента. Для этого используй смещение на 50%, с помощью свойства position, со значением absolute, а также свойство transform со значением translate и смещением по горизонтали и вертикали в -50%; -->
+    <div class="container">
+      <div class="box">
+        <span>x</span>
+      </div>
+    </div>
+    <!-- 2 -->
+    <!-- Симметричность CSS переходов при событии hover
+Событие hover принято оформлять какими-то изменениями CSS свойств. При использовании CSS переходов для hover очень важно размещать свойства в подходящих селекторах.
+
+Дело в том, что если разместить все связанное с CSS переходами только в селекторе с псевдоклассом hover, то при наведении курсора, CSS переходы будут работать как ожидается. Но когда курсор покинет элемент, CSS переход не сработает.
+
+Рассмотрим задачу, которая покажет, как избегать подобной ситуации.
+
+Задание
+Наведи курсор на элемент (красный круг) и убедись что при hover CSS переход есть.
+Уведи курсор от элемента и убедись, что CSS переход не работает при отводе курсора.
+Сделай CSS переход симметричным, т.е. чтобы переход происходил как при наведении курсора на элемент, так и при отводе курсора с элемента. Для этого:
+
+перемести строку transition: .8s all ease; из селектора .box:hover  в селектор .box;
+убедись что после перемещения CSS переход симметричен относительно события hover. -->
+    <h4>Симметричность CSS перехода при <em>hover</em></h4>
+    <div class="border">
+      <div class="box"></div>
+    </div>
+    <!-- 3 -->
+    <!-- CSS переход при событии hover и приоритет свойства left над right
+Рассмотрим пример как создать разное поведение CSS перехода при наведении и при отводе курсора от элемента. Для этого можно использовать, к примеру, факт преимущества свойства left над свойством right у элементов с position: absolute.
+
+Рассмотрим ситуацию, когда к одному и тому же элементу применяются одновременно два свойства left и right. В примере ниже для элементов с классами left и right применяются одноименные свойства. А для элемента с классом both применяются left и right одновременно. Бросается в глаза тот факт что свойство left имеет преимущество, несмотря на то, что оно в потоке выполнения записано раньше чем свойство right.
+
+<div class="container">
+  <div class="box left"></div>
+  <div class="box right"></div>
+</div>
+<div class="container">
+  <div class="box both"></div>
+</div>
+
+.container {
+  max-width: 480px;
+  margin: 1rem auto;
+  min-height: 20px;
+  padding: 1rem;
+  box-shadow: 2px 2px 6px 3px hsla(0, 0%, 0%, .2);
+  position: relative;
+}
+.box {
+  --s: 20px;
+  width: var(--s);
+  height: var(--s);
+  position: absolute;
+  top: 1rem;
+}
+.left {
+  background-color: crimson;
+  left: 1rem;
+}
+.right {
+  background-color: slateblue;
+  right: 1rem;
+}
+.both {
+  background-color: teal;
+  left: 1rem;
+  right: 1rem;
+}
+Если мы повысим специфичность для свойства right, добавив в селектор еще один класс с псевдоклассом :hover , все равно преимущество left сохранится, как видно в пример ниже. При наведении курсора на элемент container одновременно срабатывают два свойства left и right. В разных контейнерах специфичность селектора выше то у одного свойства, то у другого, но итоговый результат одинаковый и определяется преимуществом left над right.
+
+<div class="container">
+  <div class="box first"></div>
+</div>
+<div class="container">
+  <div class="box second"></div>
+</div>
+.container {
+  max-width: 480px;
+  margin: 1rem auto;
+  min-height: 20px;
+  padding: 1rem;
+  box-shadow: 2px 2px 6px 3px hsla(0, 0%, 0%, .2);
+  position: relative;
+}
+.box {
+  --s: 20px;
+  width: var(--s);
+  height: var(--s);
+  position: absolute;
+  top: 1rem;
+}
+.first {
+  background-color: crimson;
+  left: 1rem;
+}
+.second {
+  background-color: slateblue;
+  right: 1rem;
+}
+.container:hover .first {
+  right: 1rem;
+}
+.container:hover .second {
+  left: 1rem;
+}
+Эту особенность можно использовать в CSS переходах с использованием hover.
+
+Задание
+При наведении курсора на текст ссылки происходит CSS переход (подчеркивание). CSS переход начинается и заканчивается с левой стороны как при наведении, так и при отводе курсора. Сделай так, чтобы CSS переход начинался с левой стороны при наведении, но при отводе курсора заканчивался с правой стороны.
+
+Для этого расставь свойства left и right со значением 0 в подходящих селекторах. -->
+    <ul>
+      <li><a href="#">item </a></li>
+      <li><a href="#">item</a></li>
+      <li><a href="#">item </a></li>
+    </ul>
+    <!-- 4 -->
+    <!-- CSS анимации при загрузке страницы
+Довольно часто, при открытии страницы, это событие сопровождается анимацией. Рассмотрим пример организации кода с примером такой анимации.
+
+Задание
+В html для элементов с классом row заданы классы с описанием двух анимаций. В css коде селекторам с классом анимации задано свойство animation-name с соответствующим значением из описания анимации @keyframes fadeInFromLeft и @keyframes fadeInFromRight.
+
+В перечислении селекторов .fadeInFromLeft, .fadeInFromRight записаны неверные свойства анимации.
+
+Измените эти значения на:
+
+1000ms для длительности анимации;
+1 для количества повторов анимации;
+both для определения когда (в начале или конце) будет применен первый и последний фрейм из анимации;
+ease-in-out для описания функции времени у анимации;
+500ms для задержки начала анимации.
+Убедитесь в выполнении анимации после ввода верных значений - для этого кликните на иконку в правом углу (см. на фото)иконка для всплывающего окнаАнимация должна выполнится только один раз. -->
+    <div class="container">
+      <div class="row fadeInFromLeft"></div>
+      <div class="row fadeInFromRight"></div>
+      <div class="row fadeInFromLeft"></div>
+      <div class="row fadeInFromRight"></div>
+    </div>
+    <!-- 5 -->
+    <!--Симметричность анимации при событии hover
+В отличие от CSS переходов правильно задать анимацию при hover намного проще. Для этого надо написать вызов анимации в селекторе элемента и отдельно в селекторе элемента с псевдоклассом hover. Важно лишь то, что это должны быть анимации с разными именами (или одним именем, если начальное и конечное состояние совпадают).
+
+Задание
+Начальное состояние элемента - круг с цветом crimson. При hover элемент должен стать квадратом с цветом slateblue.
+
+Есть две анимации, описывающие изменение CSS свойств при наведении курсора (cursorMoveIn) и при отводе курсора от элемента (cursorMoveOut).
+
+Задайте краткую форму вызова анимации animation: name 0.8s forwards; в разных селекторах, заменив name на подходящее имя анимации.  -->
+    <h4 class="title">Анимация при <em>hover</em></h4>
+    <div class="box"></div>
+  </body>
+</html>
